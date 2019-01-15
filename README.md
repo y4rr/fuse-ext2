@@ -212,6 +212,8 @@ mkdir -p ~/mnt/fuse-ext2.test-fs.ext4
 fuse-ext2  /tmp/fuse-ext2.test-fs.ext4 ~/mnt/fuse-ext2.test-fs.ext4 -o rw+,allow_other,uid=501,gid=20
 ```
 
+> Utilities such as **mkfs.ext{2,3,4} will be located within the **build/fuse-ext2.build/gnu/{bin,sbin} A **prefix** can be set / changed in the build script if a different path is desired to store the utilities.
+
 To verify **UID** and **GID** of the user mounting the file system
 
 ```shell
@@ -247,8 +249,8 @@ Example:  fuse-ext2 /dev/sda1 /mnt/sda1
 - there are no known bugs for read-only mode, read only mode should be ok for every one.
 - although, write support is available please do not mount your filesystems with write support unless you do not have anything to loose.
 
-Please send output the output of below command while reporting bugs as [GitHub Issue](https://github.com/alperakcan/fuse-ext2/issues/new).
-Before submitting a bug report, please look at the [existing issues](https://github.com/alperakcan/fuse-ext2/issues?utf8=%E2%9C%93&q=is%3Aissue) first.
+Please send output the output of below command while reporting bugs as [GitHub Issue](https://github.com/ipatch/fuse-ext2/issues/new).
+Before submitting a bug report, please look at the [existing issues](https://github.com/ipatch/fuse-ext2/issues?utf8=%E2%9C%93&q=is%3Aissue) first.
 
 ```shell
 /usr/local/bin/fuse-ext2 -v /dev/path /mnt/point -o debug
