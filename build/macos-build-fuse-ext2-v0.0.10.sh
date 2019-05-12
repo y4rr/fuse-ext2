@@ -19,7 +19,7 @@ cd fuse-ext2.build
 build_root=$(pwd)
 echo "$build_root"
 
-# m4
+echo "setup m4"
 if [ ! -f m4-1.4.18.tar.xz ]; then
   curl -O -L https://ftp.gnu.org/gnu/m4/m4-1.4.18.tar.xz
 fi
@@ -30,7 +30,7 @@ make
 make install
 cd ../
 
-# autoconf
+echo "setup autoconf"
 if [ ! -f autoconf-2.69.tar.gz ]; then
   curl -O -L http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz
 fi
@@ -47,7 +47,7 @@ echo "$PATH"
 
 echo "====================================================="
 
-# automake
+echo "automake"
 if [ ! -f automake-1.16.1.tar.xz ]; then
   curl -O -L https://ftp.gnu.org/gnu/automake/automake-1.16.1.tar.xz
 fi
@@ -70,7 +70,7 @@ echo "$PATH"
 
 echo "====================================================="
 
-# automake
+echo "setup automake"
 
 ./configure --prefix="$build_root/gnu"
 make
@@ -83,7 +83,7 @@ echo "$PATH"
 
 echo "====================================================="
 
-# libtool
+echo "setup libtool"
 if [ ! -f libtool-2.4.6.tar.gz ]; then
   curl -O -L https://ftp.wayne.edu/gnu/libtool/libtool-2.4.6.tar.xz
 fi
@@ -94,7 +94,7 @@ make
 make install
 cd ../
 
-# e2fsprogs
+echo "setup e2fsprogs"
 if [ ! -f e2fsprogs-1.44.3.tar.xz ]; then
   curl -O -L https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v1.44.3/e2fsprogs-1.44.3.tar.xz
 fi
