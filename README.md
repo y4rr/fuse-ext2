@@ -1,4 +1,4 @@
-# Fuse Ext2
+## Fuse Ext2
 
 **Fuse-ext2** is an EXT2/EXT3/EXT4 filesystem for  [**FUSE**](https://github.com/osxfuse/fuse), and is built to work with [**osxfuse**](https://github.com/osxfuse/osxfuse).
 
@@ -30,64 +30,64 @@ Look for **`homebrew/cask`** in the output.
 
 To install **Fuse for macOS** using brew:
 
-```bash
+```shell
 brew cask install osxfuse
 ```
 
 ## Building
 
-### Debian/Ubuntu:
+### Debian/Ubuntu
 
 Building from source depends on the following:
 
-* m4
-* autoconf
-* automake
-* libtool
-* libfuse-dev
-* e2fsprogs
-* comerr-dev
-* e2fslibs-dev
+- m4
+- autoconf
+- automake
+- libtool
+- libfuse-dev
+- e2fsprogs
+- comerr-dev
+- e2fslibs-dev
 
 ```shell
-$ sudo apt-get install m4 autoconf automake libtool
-$ sudo apt-get install libfuse-dev e2fsprogs comerr-dev e2fslibs-dev
-	
-$ ./autogen.sh
-$ ./configure
-$ make
-$ sudo make install
+sudo apt-get install m4 autoconf automake libtool
+sudo apt-get install libfuse-dev e2fsprogs comerr-dev e2fslibs-dev
+
+./autogen.sh
+./configure
+make
+sudo make install
 ```
 
-### Fedora 
-```bash 
-$ sudo dnf install @development-tools m4 autoconf automake libtool e2fsprogs libcom_err-devel fuse-libs e2fsprogs-devel
-# build part 
-$ ./autogen.sh
-$ ./configure
-$ make
-$ sudo make install
+## Fedora
+
+```shell
+sudo dnf install @development-tools m4 autoconf automake libtool e2fsprogs libcom_err-devel fuse-libs e2fsprogs-devel
+echo "build part"
+./autogen.sh
+./configure
+make
+sudo make install
 ```
 
-You can use `checkinstall` or some other equivalent tool to generate an install 
-package for your distribution.
+You can use `checkinstall` or some other equivalent tool to generate an install package for your distribution.
 
-### FreeBSD:
+### FreeBSD
 
 Install via pkg:
 
 ```shell
-$ pkg install sysutils/fusefs-ext2
+pkg install sysutils/fusefs-ext2
 ```
 
 Building via ports:
 
 ```shell
-$ cd /usr/ports/sysutils/fusefs-ext2
-$ make install clean
+cd /usr/ports/sysutils/fusefs-ext2
+make install clean
 ```
 
-### macOS:
+## macOS
 
 Dependencies:
 
@@ -95,15 +95,14 @@ Dependencies:
 
 Building **from source** depends on the following:
 
-* m4
-* autoconf
-* automake
-* libtool
-* e2fsprogs
-* xcode-select
+- m4
+- autoconf
+- automake
+- libtool
+- e2fsprogs
+- xcode-select
 
-Copy and paste this into a file such as `/tmp/ext4/script.sh`.  Remember to `chmod +x script.sh`.  Run it 
-from that directory - `./script.sh`
+Copy and paste this into a file such as `/tmp/ext4/script.sh`.  Remember to `chmod +x script.sh`.  Run it from that directory - `./script.sh`
 
 ```shell
 #!/bin/sh
@@ -114,14 +113,14 @@ mkdir fuse-ext2.build
 cd fuse-ext2.build
 
 if [ ! -d fuse-ext2 ]; then
-    git clone https://github.com/alperakcan/fuse-ext2.git	
+  git clone https://github.com/alperakcan/fuse-ext2.git
 fi
 
 # m4
 if [ ! -f m4-1.4.17.tar.gz ]; then
-    curl -O -L http://ftp.gnu.org/gnu/m4/m4-1.4.17.tar.gz
+  curl -O -L http://ftp.gnu.org/gnu/m4/m4-1.4.17.tar.gz
 fi
-tar -zxvf m4-1.4.17.tar.gz 
+tar -zxvf m4-1.4.17.tar.gz
 cd m4-1.4.17
 ./configure --prefix=/opt/gnu
 make -j 16
@@ -185,7 +184,7 @@ make
 sudo make install
 ```
 
-# Test
+## Test
 
 The e2fsprogs live in /opt/gnu/bin and /opt/gnu/sbin. fuse-ext2 is in /usr/local/bin.
 
@@ -209,11 +208,11 @@ To verify the file system has mounted properly:
 mount
 ```
 
-# Usage
+## Usage
 
 See the [Man page](http://man.cx/fuseext2(1)) for options.
 
-```
+```shell
 Usage:    fuse-ext2 <device|image_file> <mount_point> [-o option[,...]]
 
 Options:  ro, rw+, force, allow_other
@@ -222,11 +221,11 @@ Options:  ro, rw+, force, allow_other
 Example:  fuse-ext2 /dev/sda1 /mnt/sda1
 ```
 
-# Bugs
+## Bugs
 
-* Multithread support is broken for now, so fuse operates in a single thread.
-* There are no known bugs for read-only mode, read only mode should be ok for everyone.
-* Even though write support is available, _please do not mount your filesystems with write support unless you have nothing to lose._
+- Multithread support is broken for now, so fuse operates in a single thread.
+- There are no known bugs for read-only mode, read only mode should be ok for everyone.
+- Even though write support is available, _please do not mount your filesystems with write support unless you have nothing to lose._
 
 Please send the output of the command below when reporting bugs as a [GitHub Issue](https://github.com/alperakcan/fuse-ext2/issues/new).
 Before submitting a bug report, please look at the [existing issues](https://github.com/alperakcan/fuse-ext2/issues?utf8=%E2%9C%93&q=is%3Aissue) first.
@@ -235,7 +234,7 @@ Before submitting a bug report, please look at the [existing issues](https://git
 $ /usr/local/bin/fuse-ext2 -v /dev/path /mnt/point -o debug
 ```
 
-# Important: Partition Labels
+## Important: Partition Labels
 
 Please **do not** use commas `,` in partition labels.
 
@@ -243,6 +242,8 @@ Please **do not** use commas `,` in partition labels.
 
 **Correct:** `e2label /dev/disk0s3 "linux-ext3"`
 
-# Contact
+## Contact
 
 Alper Akcan <alper.akcan@gmail.com>
+
+Chris Jones <chris.r.jones.1983@gmail.com>
