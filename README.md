@@ -102,16 +102,6 @@ Building **from source** depends on the following:
 - e2fsprogs
 - xcode-select
 
-<<<<<<< HEAD
-Copy and paste this into a file such as `/tmp/ext4/script.sh`.  Remember to `chmod +x script.sh`.  Run it from that directory - `./script.sh`
-||||||| merged common ancestors
-Copy and paste this into a file such as `/tmp/ext4/script.sh`.  Remember to `chmod +x script.sh`.  Run it 
-from that directory - `./script.sh`
-=======
-Copy and paste this into a file such as `/tmp/ext4/script.sh`, but do *not* name the file `install.sh`. Remember to `chmod +x script.sh`. Run it 
-from that directory - `./script.sh`
->>>>>>> 0d413782518747432623c50e7d1db53d842df574
-
 ```shell
 #!/bin/sh
 export PATH=/opt/gnu/bin:$PATH
@@ -124,7 +114,7 @@ if [ ! -d fuse-ext2 ]; then
   git clone https://github.com/alperakcan/fuse-ext2.git
 fi
 
-# m4
+echo "download, configure and build m4"
 if [ ! -f m4-1.4.17.tar.gz ]; then
   curl -O -L http://ftp.gnu.org/gnu/m4/m4-1.4.17.tar.gz
 fi
@@ -134,41 +124,41 @@ cd m4-1.4.17
 make -j 16
 sudo make install
 cd ../
-    
-# autoconf
+
+echo "download, configure, and build autoconf"
 if [ ! -f autoconf-2.69.tar.gz ]; then
     curl -O -L http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz
 fi
-tar -zxvf autoconf-2.69.tar.gz 
+tar -zxvf autoconf-2.69.tar.gz
 cd autoconf-2.69
 ./configure --prefix=/opt/gnu
 make
 sudo make install
 cd ../
-    
-# automake
+
+echo "download, configure, and build automake"
 if [ ! -f automake-1.15.tar.gz ]; then
     curl -O -L http://ftp.gnu.org/gnu/automake/automake-1.15.tar.gz
 fi
-tar -zxvf automake-1.15.tar.gz 
+tar -zxvf automake-1.15.tar.gz
 cd automake-1.15
 ./configure --prefix=/opt/gnu
 make
 sudo make install
 cd ../
-    
-# libtool
+
+echo "download, configure, and build libtool"
 if [ ! -f libtool-2.4.6.tar.gz ]; then
-    curl -O -L http://ftpmirror.gnu.org/libtool/libtool-2.4.6.tar.gz
+    curl -O -L http://ftp.gnu.org/libtool/libtool-2.4.6.tar.gz
 fi
-tar -zxvf libtool-2.4.6.tar.gz 
+tar -zxvf libtool-2.4.6.tar.gz
 cd libtool-2.4.6
 ./configure --prefix=/opt/gnu
 make
 sudo make install
 cd ../
 
-# e2fsprogs
+echo "download, configure, and build e2fsprogs"
 if [ ! -f e2fsprogs-1.43.4.tar.gz ]; then
     curl -O -L https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v1.43.4/e2fsprogs-1.43.4.tar.gz
 fi
@@ -180,8 +170,8 @@ sudo make install
 sudo make install-libs
 sudo cp /opt/gnu/lib/pkgconfig/* /usr/local/lib/pkgconfig
 cd ../
-    
-# fuse-ext2
+
+echo "configure and build fuse-ext2"
 export PATH=/opt/gnu/bin:$PATH
 export PKG_CONFIG_PATH=/opt/gnu/lib/pkgconfig:/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
 
@@ -204,13 +194,13 @@ mkdir -p ~/mnt/fuse-ext2.test-fs.ext4
 fuse-ext2  /tmp/fuse-ext2.test-fs.ext4 -o rw+,allow_other,uid=501,gid=20
 ```
 
-To verify the **UID** and **GID** of the user mounting the file system:
+To print **UID** and **GID** of the user mounting the file system:
 
 ```shell
 id
 ```
 
-To verify the file system has mounted properly:
+To verify if the filesystem has mounted properly:
 
 ```shell
 mount
@@ -239,7 +229,7 @@ Please send the output of the command below when reporting bugs as a [GitHub Iss
 Before submitting a bug report, please look at the [existing issues](https://github.com/alperakcan/fuse-ext2/issues?utf8=%E2%9C%93&q=is%3Aissue) first.
 
 ```shell
-$ /usr/local/bin/fuse-ext2 -v /dev/path /mnt/point -o debug
+/usr/local/bin/fuse-ext2 -v /dev/path /mnt/point -o debug
 ```
 
 ## Important: Partition Labels
