@@ -102,7 +102,15 @@ Building **from source** depends on the following:
 - e2fsprogs
 - xcode-select
 
+<<<<<<< HEAD
 Copy and paste this into a file such as `/tmp/ext4/script.sh`.  Remember to `chmod +x script.sh`.  Run it from that directory - `./script.sh`
+||||||| merged common ancestors
+Copy and paste this into a file such as `/tmp/ext4/script.sh`.  Remember to `chmod +x script.sh`.  Run it 
+from that directory - `./script.sh`
+=======
+Copy and paste this into a file such as `/tmp/ext4/script.sh`, but do *not* name the file `install.sh`. Remember to `chmod +x script.sh`. Run it 
+from that directory - `./script.sh`
+>>>>>>> 0d413782518747432623c50e7d1db53d842df574
 
 ```shell
 #!/bin/sh
